@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+        <script type="text/javascript" src="d3/d3.v4.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var dataset;
+
+            d3.csv("food.csv", function(data) {
+                dataset = data;
+
+                // Code for Vis Goes below
+                d3.select("body").selectAll("p")
+                    .data(dataset)
+                    .enter()
+                    .append("p")
+                    .text(function(d) { return "I can count up to " + d.Deliciousness; })
+                    .style("color", function(d) {
+                      if (d.Deliciousness > 6) {
+                        return "red";
+                      } else {
+                        return "black";
+                      }
+                    });
+            });
+        </script>
+        <p>
+            Old Paragraph!
+        </p>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Drawing divs with data</title>
+		<script type="text/javascript" src="d3/d3.v4.js"></script>
+		<style type="text/css">
+		
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 75;
+				background-color: teal;
+				margin: 2px;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			var dataset;
+
+            d3.csv("food.csv", function(data) {
+                dataset = data;
+                console.log(dataset);
+
+                // Code for Vis Goes below
+                d3.select("body").selectAll("div")
+									.data(dataset)
+									.enter()
+									.append("div")
+									.attr("class", "bar")
+									.style("height", function(d) {
+										console.log(d);
+										console.log(typeof(Number(d.Deliciousness)));
+										return (Number(d.Deliciousness) * 10);
+									});
+            });
+			
+		</script>
+	</body>
+</html>
