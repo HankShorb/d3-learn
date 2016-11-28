@@ -32,9 +32,7 @@
 									.append("div")
 									.attr("class", "bar")
 									.style("height", function(d) {
-										console.log(d);
-										console.log(typeof(Number(d.Deliciousness)));
-										return (Number(d.Deliciousness) * 10);
+										return (Number(d.Deliciousness) * 10) + "px";
 									});
             });
 			
